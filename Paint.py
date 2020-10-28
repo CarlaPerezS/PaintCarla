@@ -22,16 +22,13 @@ def square(start, end):
 
     end_fill()
 
-def drawcircle(start, end):
+def Drawcircle(start, end):
     "Draw circle from start to end."
     up()
-    goto(start.x, start.y) 
+    goto(start.x, start.y)
     down()
-    for count in range(360):
-        forward(math.sin(math.radians(1))*(math.sqrt((end.x - start.x)**2+(end.y - start.y)**2)))
-        left(1)
-    end_fill()
-    pass  # TODO
+    Distance=abs(end-start)
+    circle(Distance)
 
 def rectangle(start, end):
     "Draw rectangle from start to end."
