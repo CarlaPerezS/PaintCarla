@@ -25,17 +25,13 @@ def square(start, end):
         left(90)
 
     end_fill()
-
-def drawcircle(start, end):
+def Drawcircle(start, end):
     #Dibuja un circulo tomando en cuenta el punto inicial y final
     up()
-    goto(start.x, start.y) 
+    goto(start.x, start.y)
     down()
-    for count in range(360):
-        forward(math.sin(math.radians(1))*(math.sqrt((end.x - start.x)**2+(end.y - start.y)**2)))
-        left(1)
-    end_fill()
-    pass  # TODO
+    Distance=abs(end-start)
+    circle(Distance)
 
 def rectangle(start, end):
     #Dibuja un rectángulo con los puntos iniciales y finales
@@ -106,6 +102,8 @@ onkey(lambda: color('purple'), 'P')
 onkey(lambda: store('shape', line), 'l')
 onkey(lambda: store('shape', square), 's') 
 onkey(lambda: store('shape', drawcircle), 'c')
+onkey(lambda: store('shape', square), 's')
+onkey(lambda: store('shape', Drawcircle), 'c')
 onkey(lambda: store('shape', rectangle), 'r')
 onkey(lambda: store('shape', triangle), 't')
 done()
