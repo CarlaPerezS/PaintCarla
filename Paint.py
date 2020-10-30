@@ -1,16 +1,20 @@
+#Paint.py
+#Carla Perez, Aranza Garcia
+#Juego pintando, dibuja diferentes figuras de diferentes colores y tamaños 
 from turtle import *
 from freegames import vector
 import math
 
+
 def line(start, end):
-    "Draw line from start to end."
+    #Dibuja una linea del punto inicial hasta al final
     up()
     goto(start.x, start.y) #place where it starts
     down()
     goto(end.x, end.y) #place where it ends
 
 def square(start, end):
-    "Draw square from start to end."
+    #Dibuja un cuadrado desde el punto de inicio hasta el punto final
     up()
     goto(start.x, start.y)
     down()
@@ -21,9 +25,8 @@ def square(start, end):
         left(90)
 
     end_fill()
-
 def Drawcircle(start, end):
-    "Draw circle from start to end."
+    #Dibuja un circulo tomando en cuenta el punto inicial y final
     up()
     goto(start.x, start.y)
     down()
@@ -31,20 +34,20 @@ def Drawcircle(start, end):
     circle(Distance)
 
 def rectangle(start, end):
-    "Draw rectangle from start to end."
+    #Dibuja un rectángulo con los puntos iniciales y finales
     up()
     goto(start.x, start.y)
     down()
     begin_fill()
-    #top
+    #arriba
     forward(2*end.x - start.x)
-    #rigth
+    #derecha
     right(90)
     forward(end.x - start.x)
-    #bottom
+    #base
     right(90)
     forward(2*end.x - start.x)
-    #left
+    #izquierda
     right(90)
     forward(end.x - start.x)
 
@@ -53,21 +56,24 @@ def rectangle(start, end):
     pass  # TODO
 
 def triangle(start, end):
-    "Draw triangle from start to end."
+    #Dibuja un triangulo con los puntos iniciales y finales
     up()
     goto(start.x, start.y)
     down()
     begin_fill()
-    forward(end.x - start.x) # draw base
+    # base
+    forward(end.x - start.x) 
+    left(120) #angulo del triangulo
+    #lado 1
+    forward(end.x - start.x) 
     left(120)
-    forward(end.x - start.x) #side
-    left(120)
-    forward(end.x - start.x) #side
+    #lado 2
+    forward(end.x - start.x) 
     end_fill()
     pass  # TODO
 
 def tap(x, y):
-    "Store starting point or draw shape."
+    #Guarda los puntos de inicio y los puntos finales
     start = state['start']
 
     if start is None:
@@ -79,12 +85,12 @@ def tap(x, y):
         state['start'] = None
 
 def store(key, value):
-    "Store value in state at key."
+    #Almacena los valores
     state[key] = value
 
 state = {'start': None, 'shape': line}
 setup(420, 420, 370, 0) #dimensiones de la pantalla
-onscreenclick(tap)
+onscreenclick(tap) 
 listen()
 onkey(undo, 'u')
 onkey(lambda: color('black'), 'K')
@@ -94,6 +100,8 @@ onkey(lambda: color('blue'), 'B')
 onkey(lambda: color('red'), 'R')
 onkey(lambda: color('purple'), 'P')
 onkey(lambda: store('shape', line), 'l')
+onkey(lambda: store('shape', square), 's') 
+onkey(lambda: store('shape', drawcircle), 'c')
 onkey(lambda: store('shape', square), 's')
 onkey(lambda: store('shape', Drawcircle), 'c')
 onkey(lambda: store('shape', rectangle), 'r')
